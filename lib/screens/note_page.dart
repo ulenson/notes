@@ -43,8 +43,8 @@ class _NotePageState extends State<NotePage> {
                   IconButton(
                     icon: const Icon(Icons.delete),
                     onPressed: () {
-                      _notesRepo.deleteNote(_notes.elementAt(i));
                       setState(() {
+                        _notesRepo.deleteNote(_notes[i]);
                         _notes = _notesRepo.notes;
                       });
                     },
