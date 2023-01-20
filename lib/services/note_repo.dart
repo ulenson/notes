@@ -15,7 +15,7 @@ class NotesRepo {
     await _box.putAsync(note);
   }
 
-  void deleteNote(Note note) {
+  deleteNote(Note note) {
     _box.remove(note.id);
   }
 

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:notes/model/note.dart';
-
+import 'package:mobx/mobx.dart';
 import 'package:notes/services/note_repo.dart';
+import 'package:notes/ui/notes/note_store.dart';
 
 class NotePage extends StatefulWidget {
   const NotePage({Key? key, required String title}) : super(key: key);
@@ -28,32 +30,37 @@ class _NotePageState extends State<NotePage> {
       appBar: AppBar(
         title: const Text('Заметки'),
       ),
-      body: ListView.builder(
-        itemCount: _notes.length,
-        itemBuilder: ((_, i) => ListTile(
-              trailing: Wrap(
-                spacing: 12,
-                children: [
-                  IconButton(
-                    icon: const Icon(Icons.edit),
-                    onPressed: () {
-                      _showEdit(_notes[i]);
-                    },
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.delete),
-                    onPressed: () {
-                      _notesRepo.deleteNote(_notes.elementAt(i));
-                      setState(() {
-                        _notes = _notesRepo.notes;
-                      });
-                    },
-                  ),
-                ],
-              ),
-              title: Text(_notes[i].name),
-              subtitle: Text(_notes[i].description),
-            )),
+      body: Observer(builder: (_) {
+        final data = _notesRepo.notes;
+
+       return  ListView.builder(
+          itemCount: data.length,
+          itemBuilder: ((_, i) => ListTile(
+                trailing: Wrap(
+                  spacing: 12,
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.edit),
+                      onPressed: () {
+                        _showEdit(_notes[i]);
+                      },
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.delete),
+                      onPressed: () {
+                        // setState(() {
+                          _notesRepo.deleteNote(_notes[i]);
+                          _notes = _notesRepo.notes;
+                        }
+                        // );
+                      // },
+                    ),
+                  ],
+                ),
+                title: Text(_notes[i].name),
+                subtitle: Text(_notes[i].description),
+              )),
+        );}
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: (() => _showDialog()), child: const Icon(Icons.add)),
@@ -96,12 +103,12 @@ class _NotePageState extends State<NotePage> {
                         description: descriptionController.text,
                       ),
                     );
-                    setState(
-                      () {
+                    // setState(
+                    //   () {
                         _notes = _notesRepo.notes;
                         Navigator.pop(context);
-                      },
-                    );
+                      // },
+                    // );
                   }),
                   child: const Text('Добавить'),
                 ),
