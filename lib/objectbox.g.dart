@@ -13,7 +13,7 @@ import 'package:objectbox/internal.dart'; // generated code can access "internal
 import 'package:objectbox/objectbox.dart';
 import 'package:objectbox_flutter_libs/objectbox_flutter_libs.dart';
 
-import 'model/note.dart';
+import 'data/entity/note.dart';
 
 export 'package:objectbox/objectbox.dart'; // so that callers only have to import this file
 
@@ -77,15 +77,15 @@ ModelDefinition getObjectBoxModel() {
       version: 1);
 
   final bindings = <Type, EntityDefinition>{
-    Note: EntityDefinition<Note>(
+    NoteEntity: EntityDefinition<NoteEntity>(
         model: _entities[0],
-        toOneRelations: (Note object) => [],
-        toManyRelations: (Note object) => {},
-        getId: (Note object) => object.id,
-        setId: (Note object, int id) {
+        toOneRelations: (NoteEntity object) => [],
+        toManyRelations: (NoteEntity object) => {},
+        getId: (NoteEntity object) => object.id,
+        setId: (NoteEntity object, int id) {
           object.id = id;
         },
-        objectToFB: (Note object, fb.Builder fbb) {
+        objectToFB: (NoteEntity object, fb.Builder fbb) {
           final nameOffset = fbb.writeString(object.name);
           final descriptionOffset = fbb.writeString(object.description);
           fbb.startTable(4);
@@ -99,7 +99,7 @@ ModelDefinition getObjectBoxModel() {
           final buffer = fb.BufferContext(fbData);
           final rootOffset = buffer.derefObject(0);
 
-          final object = Note(
+          final object = NoteEntity(
               id: const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0),
               name: const fb.StringReader(asciiOptimization: true)
                   .vTableGet(buffer, rootOffset, 6, ''),
@@ -114,14 +114,14 @@ ModelDefinition getObjectBoxModel() {
 }
 
 /// [Note] entity fields to define ObjectBox queries.
-class Note_ {
-  /// see [Note.id]
-  static final id = QueryIntegerProperty<Note>(_entities[0].properties[0]);
+class NoteEntity_ {
+  /// see [NoteEntity.id]
+  static final id = QueryIntegerProperty<NoteEntity>(_entities[0].properties[0]);
 
   /// see [Note.name]
-  static final name = QueryStringProperty<Note>(_entities[0].properties[1]);
+  static final name = QueryStringProperty<NoteEntity>(_entities[0].properties[1]);
 
   /// see [Note.description]
   static final description =
-      QueryStringProperty<Note>(_entities[0].properties[2]);
+      QueryStringProperty<NoteEntity>(_entities[0].properties[2]);
 }

@@ -1,27 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:notes/model/note.dart';
+import 'package:notes/data/entity/note.dart';
 import 'package:mobx/mobx.dart';
-import 'package:notes/services/note_repo.dart';
+
+// import 'package:notes/services/note_repo.dart';
 import 'package:notes/ui/notes/note_store.dart';
 
+import '../../data/repository/notes/note_repo.dart';
+import '../../domain/model/note.dart';
+
 class NotePage extends StatefulWidget {
-  const NotePage({Key? key, required String title}) : super(key: key);
+  const NotePage({Key? key}) : super(key: key);
 
   @override
   State<NotePage> createState() => _NotePageState();
 }
 
 class _NotePageState extends State<NotePage> {
-  final _notesRepo = NotesRepo();
-  late var _notes = <Note>[];
+  final _viewModel = NoteStore();
+
+  // final _notesRepo = NotesRepo();
+  // late var _notes = <Note>[];
 
   @override
   void initState() {
     super.initState();
-    _notesRepo
-        .initDB()
-        .whenComplete(() => setState(() => _notes = _notesRepo.notes));
+
+    _viewModel.init();
+    // _notesRepo
+    //     .initDB();
+    // .whenComplete(() => setState(() => _notes = _notesRepo.notes));
   }
 
   @override
@@ -31,10 +39,10 @@ class _NotePageState extends State<NotePage> {
         title: const Text('Заметки'),
       ),
       body: Observer(builder: (_) {
-        final data = _notesRepo.notes;
+        // final data = _notesRepo.notes;
 
-       return  ListView.builder(
-          itemCount: data.length,
+        return ListView.builder(
+          itemCount: _viewModel.value.length,
           itemBuilder: ((_, i) => ListTile(
                 trailing: Wrap(
                   spacing: 12,
@@ -42,32 +50,33 @@ class _NotePageState extends State<NotePage> {
                     IconButton(
                       icon: const Icon(Icons.edit),
                       onPressed: () {
-                        _showEdit(_notes[i]);
+                        _showEdit(_viewModel.value[i]);
                       },
                     ),
                     IconButton(
-                      icon: const Icon(Icons.delete),
-                      onPressed: () {
-                        // setState(() {
-                          _notesRepo.deleteNote(_notes[i]);
-                          _notes = _notesRepo.notes;
+                        icon: const Icon(Icons.delete),
+                        onPressed: () {
+                          // setState(() {
+                          _viewModel.deleteNote(_viewModel.value[i]);
+                          // _notes = _notesRepo.notes;
                         }
                         // );
-                      // },
-                    ),
+                        // },
+                        ),
                   ],
                 ),
-                title: Text(_notes[i].name),
-                subtitle: Text(_notes[i].description),
+                title: Text(_viewModel.value[i].name),
+                subtitle: Text(_viewModel.value[i].description),
               )),
-        );}
-      ),
+        );
+      }),
       floatingActionButton: FloatingActionButton(
           onPressed: (() => _showDialog()), child: const Icon(Icons.add)),
     );
   }
 
   Future _showDialog() => showGeneralDialog(
+
         barrierDismissible: false,
         context: context,
         pageBuilder: (_, __, ___) {
@@ -97,17 +106,11 @@ class _NotePageState extends State<NotePage> {
                 ),
                 TextButton(
                   onPressed: (() async {
-                    await _notesRepo.addNote(
-                      Note(
-                        name: nameController.text,
-                        description: descriptionController.text,
-                      ),
-                    );
-                    // setState(
-                    //   () {
-                        _notes = _notesRepo.notes;
-                        Navigator.pop(context);
-                      // },
+                    await _viewModel.addNote(Note(id: 0, name: nameController.text, description: descriptionController.text)
+                   );
+
+                    Navigator.pop(context);
+                    // },
                     // );
                   }),
                   child: const Text('Добавить'),
@@ -151,21 +154,22 @@ class _NotePageState extends State<NotePage> {
                   ),
                   TextButton(
                     onPressed: () async {
-                      await _notesRepo.updateNote(
+                      await _viewModel.updateNote(
                         note.id,
                         Note(
                           name: nameController.text,
                           description: descriptionController.text,
+                          id: 0,
                         ),
                       );
 
-                      setState(
-                        () {
-                          _notes = _notesRepo.notes;
-                          Navigator.pop(context);
-                        },
-                      );
+                      // setState(
+                      //   () {
+                      //     _notes = _notesRepo.notes;
+                      Navigator.pop(context);
                     },
+                    // );
+                    // },
                     child: const Text('Изменить'),
                   ),
                 ],
