@@ -5,6 +5,7 @@
 // See also https://docs.objectbox.io/getting-started#generate-objectbox-code
 
 // ignore_for_file: camel_case_types
+// coverage:ignore-file
 
 import 'dart:typed_data';
 
@@ -20,7 +21,7 @@ export 'package:objectbox/objectbox.dart'; // so that callers only have to impor
 final _entities = <ModelEntity>[
   ModelEntity(
       id: const IdUid(1, 7589793220805295044),
-      name: 'Note',
+      name: 'NoteEntity',
       lastPropertyId: const IdUid(3, 2579636614231272094),
       flags: 0,
       properties: <ModelProperty>[
@@ -113,15 +114,17 @@ ModelDefinition getObjectBoxModel() {
   return ModelDefinition(model, bindings);
 }
 
-/// [Note] entity fields to define ObjectBox queries.
+/// [NoteEntity] entity fields to define ObjectBox queries.
 class NoteEntity_ {
   /// see [NoteEntity.id]
-  static final id = QueryIntegerProperty<NoteEntity>(_entities[0].properties[0]);
+  static final id =
+      QueryIntegerProperty<NoteEntity>(_entities[0].properties[0]);
 
-  /// see [Note.name]
-  static final name = QueryStringProperty<NoteEntity>(_entities[0].properties[1]);
+  /// see [NoteEntity.name]
+  static final name =
+      QueryStringProperty<NoteEntity>(_entities[0].properties[1]);
 
-  /// see [Note.description]
+  /// see [NoteEntity.description]
   static final description =
       QueryStringProperty<NoteEntity>(_entities[0].properties[2]);
 }

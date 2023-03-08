@@ -5,18 +5,18 @@ packages:
     dependency: transitive
     description:
       name: _fe_analyzer_shared
-      sha256: e6dd5609f0945ef6bc72bdcd28af6eeabefef99a6d62b7790320133789217759
+      sha256: "98d1d33ed129b372846e862de23a0fc365745f4d7b5e786ce667fcbbb7ac5c07"
       url: "https://pub.dev"
     source: hosted
-    version: "38.0.0"
+    version: "55.0.0"
   analyzer:
     dependency: transitive
     description:
       name: analyzer
-      sha256: c71e50e4e1674c9ffeaf053bb8d38e4a03b94d08af6a27fb352f3ff569becc44
+      sha256: "881348aed9b0b425882c97732629a6a31093c8ff20fc4b3b03fb9d3d50a3a126"
       url: "https://pub.dev"
     source: hosted
-    version: "3.4.1"
+    version: "5.7.1"
   args:
     dependency: transitive
     description:
@@ -69,18 +69,18 @@ packages:
     dependency: transitive
     description:
       name: build_resolvers
-      sha256: "9aae031a54ab0beebc30a888c93e900d15ae2fd8883d031dbfbd5ebdb57f5a4c"
+      sha256: db49b8609ef8c81cca2b310618c3017c00f03a92af44c04d310b907b2d692d95
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.9"
+    version: "2.2.0"
   build_runner:
     dependency: "direct dev"
     description:
       name: build_runner
-      sha256: "56942f8114731d1e79942cd981cfef29501937ff1bccf4dbdce0273f31f13640"
+      sha256: b0a8a7b8a76c493e85f1b84bffa0588859a06197863dba8c9036b15581fd9727
       url: "https://pub.dev"
     source: hosted
-    version: "2.2.0"
+    version: "2.3.3"
   build_runner_core:
     dependency: transitive
     description:
@@ -161,6 +161,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.2"
+  cryptography:
+    dependency: transitive
+    description:
+      name: cryptography
+      sha256: f78bdab39ef7077167e42a582c222245861f508ae07e3ea873fc0424e9faebb9
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.4.0"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -173,10 +181,10 @@ packages:
     dependency: transitive
     description:
       name: dart_style
-      sha256: "8aff82f9b26fd868992e5430335a9d773bfef01e1d852d7ba71bf4c5d9349351"
+      sha256: "5be16bf1707658e4c03078d4a9b90208ded217fb02c163e207d334082412f2fb"
       url: "https://pub.dev"
     source: hosted
-    version: "2.2.3"
+    version: "2.2.5"
   fake_async:
     dependency: transitive
     description:
@@ -234,10 +242,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_mobx
-      sha256: "3a9cdf7b2d94447cb298e67b1ef9984c592405188fccf5e9513d60a9b6ff8480"
+      sha256: "0da4add0016387a7bf309a0d0c41d36c6b3ae25ed7a176409267f166509e723e"
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.6+4"
+    version: "2.0.6+5"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -247,10 +255,10 @@ packages:
     dependency: transitive
     description:
       name: frontend_server_client
-      sha256: "4f4a162323c86ffc1245765cfe138872b8f069deb42f7dbb36115fa27f31469b"
+      sha256: "408e3ca148b31c20282ad6f37ebfa6f4bdc8fede5b74bc2f08d9d92b55db3612"
       url: "https://pub.dev"
     source: hosted
-    version: "2.1.3"
+    version: "3.2.0"
   glob:
     dependency: transitive
     description:
@@ -267,6 +275,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.2.0"
+  http:
+    dependency: transitive
+    description:
+      name: http
+      sha256: "6aa2946395183537c8b880962d935877325d6a09a2867c3970c05c0fed6ac482"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.13.5"
   http_multi_server:
     dependency: transitive
     description:
@@ -359,42 +375,42 @@ packages:
     dependency: "direct main"
     description:
       name: mobx
-      sha256: "3ecfa7352af6b9e4948db5fdd53a67ed425edc52087295a2495b544a5b418c2b"
+      sha256: "6738620307a424d2c9ad8b873f4dce391c44e9135eb4e75668ac8202fec7a9b8"
       url: "https://pub.dev"
     source: hosted
-    version: "2.1.0"
+    version: "2.1.4"
   mobx_codegen:
     dependency: "direct dev"
     description:
       name: mobx_codegen
-      sha256: "81e4c0a627809b83ada37709f234b73a9e36ef91fe2127698b4b76f584eb1b9a"
+      sha256: "86122e410d8ea24dda0c69adb5c2a6ccadd5ce02ad46e144764e0d0184a06181"
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.7+3"
+    version: "2.1.1"
   objectbox:
     dependency: "direct main"
     description:
       name: objectbox
-      sha256: a46da5215341ba553bac90d1be223b36eb08d31531c25523849357a597639ba7
+      sha256: c18d41f4e81e5a30fc0e2200e9e8306f5ccc8a9b61fe3746426359690c33dc7b
       url: "https://pub.dev"
     source: hosted
-    version: "1.6.0"
+    version: "1.7.2"
   objectbox_flutter_libs:
     dependency: "direct main"
     description:
       name: objectbox_flutter_libs
-      sha256: "7a133585d483ccbfc684edee1272bba9af88a98080855f0bb2dd3b63473b1a49"
+      sha256: "179a2edfca5eb80abee6e829ebff69872ad20c9f07c2527fe9d098f4bf5a5b83"
       url: "https://pub.dev"
     source: hosted
-    version: "1.6.0"
+    version: "1.7.2"
   objectbox_generator:
     dependency: "direct dev"
     description:
       name: objectbox_generator
-      sha256: a1210946bdd5659162e6e498668c8d9a8413dde8491d0f0a29e226ba5d2ffe06
+      sha256: "728a9ccf4d6a2ac44a016f6cb9798e4a31ee92b79828526181e0de97a3506c28"
       url: "https://pub.dev"
     source: hosted
-    version: "1.6.0"
+    version: "1.7.2"
   package_config:
     dependency: transitive
     description:
@@ -532,10 +548,10 @@ packages:
     dependency: transitive
     description:
       name: source_gen
-      sha256: "00f8b6b586f724a8c769c96f1d517511a41661c0aede644544d8d86a1ab11142"
+      sha256: c2bea18c95cfa0276a366270afaa2850b09b4a76db95d546f3d003dcc7011298
       url: "https://pub.dev"
     source: hosted
-    version: "1.2.2"
+    version: "1.2.7"
   source_span:
     dependency: transitive
     description:

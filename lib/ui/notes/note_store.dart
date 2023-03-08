@@ -11,9 +11,9 @@ part 'note_store.g.dart'; // Указание для кодогенерации
 /// HomeStore — Store, который будет использовать View. Своего рода это ViewModel.
 /// _HomeStore — Наша реализация Store, _$HomeStore — Store, который
 /// будет создан магической кодогенерацией :)
- class NoteStore = _NoteStore with _$NoteStore;
+  class NoteStore = _NoteStore with _$NoteStore;
 
- class _NoteStore with Store {
+ abstract class _NoteStore with Store {
   final _notesInteractor = NotesInteractor();
   // final NotesRepo _notesRepo;
 

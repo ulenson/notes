@@ -24,12 +24,48 @@ mixin _$NoteStore on _NoteStore, Store {
     });
   }
 
-  late final _$addNoteAsyncAction =
-      AsyncAction('_NoteStore.addNote', context: context);
+  late final _$initAsyncAction =
+      AsyncAction('_NoteStore.init', context: context);
+
+  @override
+  Future<dynamic> init() {
+    return _$initAsyncAction.run(() => super.init());
+  }
+
+  late final _$_NoteStoreActionController =
+      ActionController(name: '_NoteStore', context: context);
 
   @override
   Future<dynamic> addNote(Note note) {
-    return _$addNoteAsyncAction.run(() => super.addNote(note));
+    final _$actionInfo =
+        _$_NoteStoreActionController.startAction(name: '_NoteStore.addNote');
+    try {
+      return super.addNote(note);
+    } finally {
+      _$_NoteStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic deleteNote(Note note) {
+    final _$actionInfo =
+        _$_NoteStoreActionController.startAction(name: '_NoteStore.deleteNote');
+    try {
+      return super.deleteNote(note);
+    } finally {
+      _$_NoteStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  Future<dynamic> updateNote(int id, Note note) {
+    final _$actionInfo =
+        _$_NoteStoreActionController.startAction(name: '_NoteStore.updateNote');
+    try {
+      return super.updateNote(id, note);
+    } finally {
+      _$_NoteStoreActionController.endAction(_$actionInfo);
+    }
   }
 
   @override
