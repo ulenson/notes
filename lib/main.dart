@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 // import 'package:notes/screens/note_page.dart';
 import 'package:notes/ui/notes/note_page.dart';
 
+import 'di/config.dart';
+
 void main() {
+  configureDependencies();
   runApp(const MyApp());
 }
 

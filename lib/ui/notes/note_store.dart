@@ -1,3 +1,4 @@
+import 'package:injectable/injectable.dart';
 import 'package:mobx/mobx.dart';
 import 'package:notes/data/entity/note.dart';
 import 'package:notes/domain/interactor/notes.dart';
@@ -11,16 +12,18 @@ part 'note_store.g.dart'; // Указание для кодогенерации
 /// HomeStore — Store, который будет использовать View. Своего рода это ViewModel.
 /// _HomeStore — Наша реализация Store, _$HomeStore — Store, который
 /// будет создан магической кодогенерацией :)
+
+@injectable
   class NoteStore = _NoteStore with _$NoteStore;
 
  abstract class _NoteStore with Store {
-  final _notesInteractor = NotesInteractor();
+  final NotesInteractor _notesInteractor ;
   // final NotesRepo _notesRepo;
 
   // Наблюдаемое, при изменении которого, обновятся все наблюдатели (Observers)
   @observable
   List<Note> value = [];
-
+  _NoteStore(this._notesInteractor);
   // Action — метод, в котором вы обновляете данные. Если обновляются сразу
   // несколько observables, то все наблюдатели будут уведомлены только после
   // всех вычислений.

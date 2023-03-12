@@ -1,12 +1,13 @@
+import 'package:injectable/injectable.dart';
 import 'package:notes/data/entity/note.dart';
 import 'package:notes/data/repository/notes/note_repo.dart';
 
 
 import '../model/note.dart';
-
+@injectable
 class NotesInteractor {
-  final  _repo = NotesRepo();
-
+   final NotesRepo _repo;
+  NotesInteractor(this._repo);
 
   List get notes => _repo.notes;
 

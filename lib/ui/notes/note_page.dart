@@ -7,9 +7,11 @@ import 'package:mobx/mobx.dart';
 import 'package:notes/ui/notes/note_store.dart';
 
 import '../../data/repository/notes/note_repo.dart';
+import '../../di/config.dart';
 import '../../domain/model/note.dart';
 
 class NotePage extends StatefulWidget {
+  final NoteStore _viewModel = getIt<NoteStore>();
   const NotePage({Key? key}) : super(key: key);
 
   @override
