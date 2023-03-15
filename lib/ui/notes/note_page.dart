@@ -11,7 +11,7 @@ import '../../di/config.dart';
 import '../../domain/model/note.dart';
 
 class NotePage extends StatefulWidget {
-  final NoteStore _viewModel = getIt<NoteStore>();
+
   const NotePage({Key? key}) : super(key: key);
 
   @override
@@ -19,7 +19,7 @@ class NotePage extends StatefulWidget {
 }
 
 class _NotePageState extends State<NotePage> {
-  final _viewModel = NoteStore();
+  final _viewModel = getIt<NoteStore>();
 
   // final _notesRepo = NotesRepo();
   // late var _notes = <Note>[];
