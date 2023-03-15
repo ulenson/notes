@@ -5,13 +5,13 @@ import 'package:notes/data/repository/notes/note_repo.dart';
 
 import '../model/note.dart';
 @injectable
-class NotesInteractor {
+ class NotesInteractor {
    final NotesRepo _repo;
   NotesInteractor(this._repo);
 
   List get notes => _repo.notes;
 
-
+   Future init() => _repo.initDB();
   Future updateNote(
     int id,
     Note note,
@@ -20,9 +20,9 @@ class NotesInteractor {
 
   Future deleteNote(Note note) => _repo.deleteNote(note);
 
-  Future init() => _repo.initDB()
 
-  ;
+
+
 
   Future addNote(Note note) => _repo.addNote(note);
 }
