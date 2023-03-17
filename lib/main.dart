@@ -1,7 +1,12 @@
+
 import 'package:flutter/material.dart';
-import 'package:notes/screens/note_page.dart';
+
+import 'di/config.dart';
+import 'ui/note_page.dart';
+
 
 void main() {
+  configureDependencies();
   runApp(const MyApp());
 }
 
@@ -11,12 +16,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const NotePage(
-        title: 'Заметки',
-      ),
+      home: const NotePage(title: '',),
     );
   }
 }

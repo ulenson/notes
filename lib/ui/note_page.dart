@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:notes/model/note.dart';
 
-import 'package:notes/services/note_repo.dart';
+import '../repository/notes_repo.dart';
+
+
 
 class NotePage extends StatefulWidget {
   const NotePage({Key? key, required String title}) : super(key: key);
